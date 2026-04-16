@@ -1,0 +1,7 @@
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-04-16"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lions-gourmet-db"
+database_id = "37d8bc7c-0181-4ac3-b210-8cf6843b1010"
