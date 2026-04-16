@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "formulahendry.auto-rename-tag",
+        "naumovs.color-highlight",
+        "vincaslt.highlight-matching-tag",
+        "ecmel.vscode-html-css",
+        "zignd.html-css-class-completion",
+        "ms-vscode.live-server",
+        "esbenp.prettier-vscode"
+    ]
+}
