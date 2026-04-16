@@ -100,21 +100,18 @@ function App() {
 
             <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
                 <div className="filters">
-                    <FilterButton
-                        label="すべて"
-                        isActive={selectedBase === 'all'}
-                        onClick={() => setSelectedBase('all')}
-                    />
-                    <FilterButton
-                        label="1塁側"
-                        isActive={selectedBase === 1}
-                        onClick={() => setSelectedBase(1)}
-                    />
-                    <FilterButton
-                        label="3塁側"
-                        isActive={selectedBase === 3}
-                        onClick={() => setSelectedBase(3)}
-                    />
+                    <div className="flex bg-gray-200 p-1 rounded-xl">
+                        {['all', 1, 3].map(base => (
+                            <button
+                                key={base}
+                                className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${selectedBase === base ? "bg-white shadow-sm text-lions-blue" : "text-gray-500"
+                                    }`}
+                                onClick={() => setSelectedBase(base)}
+                            >
+                                {base === 'all' ? "全エリア" : `${base}塁側`}
+                            </button>
+                        ))}
+                    </div>
                     <FilterButton
                         label="販売終了を含める"
                         isActive={!showActive}
