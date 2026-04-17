@@ -96,7 +96,7 @@ function App() {
                     {inputQuery && (
                         <button
                             onClick={() => setInputQuery("")}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none p-1 rounded-full hover:bg-gray-100 transition-colors"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-lions-blue focus-visible:ring-offset-1 p-1 rounded-full hover:bg-gray-100 transition-colors"
                             aria-label="検索内容をクリア"
                         >
                             {/* Tailwindと相性の良いHeroiconsなどのSVGアイコン（バツ印） */}
