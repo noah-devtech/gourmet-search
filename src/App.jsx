@@ -73,26 +73,26 @@ function App() {
 
             <div className="py-2 px-4">
                 <h1 className="text-2xl font-black text-lions-blue flex items-center justify-center gap-2 tracking-tight">
-                獅子まんま 検索システム
-                <span className="text-xl" role="img" aria-label="search">🔍️</span>
-            </h1>
+                    獅子まんま 検索システム
+                    <span className="text-xl" role="img" aria-label="search">🔍️</span>
+                </h1>
             </div>
 
             <header className="sticky top-0 z-10 bg-gray-50/60 px-4 py-1 border-b border-gray-200/60 backdrop-blur-sm">
                 <div className="relative my-1">
-                <input
-                    className="
-                        w-full p-2 text-base border border-gray-300 rounded-xl shadow-sm
-                        placeholder:text-gray-400
-                        focus:outline-none focus:ring-2 focus:ring-lions-blue focus:border-transparent
-                        transition-all duration-200
-                        bg-white
-                    "
-                    type="text"
-                    value={inputQuery}
-                    onChange={(e) => setInputQuery(e.target.value)}
-                    placeholder="商品名、店舗名で検索..."
-                />
+                    <input
+                        className="
+                            w-full p-2 text-base border border-gray-300 rounded-xl shadow-sm
+                            placeholder:text-gray-400
+                            focus:outline-none focus:ring-2 focus:ring-lions-blue focus:border-transparent
+                            transition-all duration-200
+                            bg-white
+                        "
+                        type="text"
+                        value={inputQuery}
+                        onChange={(e) => setInputQuery(e.target.value)}
+                        placeholder="商品名、店舗名で検索..."
+                    />
                     {inputQuery && (
                         <button
                             onClick={() => setInputQuery("")}
@@ -105,33 +105,33 @@ function App() {
                             </svg>
                         </button>
                     )}
-            </div>
+                </div>
 
                 <div className="flex flex-col items-center gap-2 overflow-x-auto">
                     <div className="filters w-full">
                         <div className="flex bg-gray-200 p-1.5 rounded-xl my-1">
-                        {['all', 1, 3].map(base => (
-                            <button
-                                key={base}
-                                className={`flex-1 py-1 text-sm font-bold rounded-lg transition-all ${selectedBase === base ? "bg-white shadow-sm text-lions-blue" : "text-gray-500"
-                                    }`}
-                                onClick={() => setSelectedBase(base)}
-                            >
-                                {base === 'all' ? "全エリア" : `${base}塁側`}
-                            </button>
-                        ))}
-                    </div>
+                            {['all', 1, 3].map(base => (
+                                <button
+                                    key={base}
+                                    className={`flex-1 py-1 text-base font-bold rounded-lg transition-all ${selectedBase === base ? "bg-white shadow-sm text-lions-blue" : "text-gray-500"
+                                        }`}
+                                    onClick={() => setSelectedBase(base)}
+                                >
+                                    {base === 'all' ? "全エリア" : `${base}塁側`}
+                                </button>
+                            ))}
+                        </div>
                         <div className="flex justify-center gap-2 my-1">
-                    <FilterButton
-                        label="販売終了を含める"
-                        isActive={!showActive}
-                        onClick={() => setShowActive(prev => !prev)}
-                    />
-                    <FilterButton
-                        label="今年確認済みのみ"
-                        isActive={showThisYear}
-                        onClick={() => setShowThisYear(prev => !prev)}
-                    />
+                            <FilterButton
+                                label="販売終了を含める"
+                                isActive={!showActive}
+                                onClick={() => setShowActive(prev => !prev)}
+                            />
+                            <FilterButton
+                                label="今年確認済みのみ"
+                                isActive={showThisYear}
+                                onClick={() => setShowThisYear(prev => !prev)}
+                            />
                         </div>
                     </div>
                 </div>
