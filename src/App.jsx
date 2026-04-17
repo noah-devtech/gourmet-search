@@ -82,7 +82,7 @@ function App() {
                 <div className="relative my-1">
                     <input
                         className="
-                            w-full p-2 text-base border border-gray-300 rounded-xl shadow-sm
+                            w-full p-2 pr-10 text-base border border-gray-300 rounded-xl shadow-sm
                             placeholder:text-gray-400
                             focus:outline-none focus:ring-2 focus:ring-lions-blue focus:border-transparent
                             transition-all duration-200
