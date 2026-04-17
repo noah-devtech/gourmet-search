@@ -120,8 +120,12 @@ function App() {
             </div>
 
             <div className="space-y-3">
-                {filteredFoods.length === 0 ? (
-                    <p className="text-center color-gray-500 mt-10">該当する商品がありません。</p>
+                {loading ? (
+                    <p className="text-center text-gray-500 mt-10">読み込み中...</p>
+                ) : errorMessage ? (
+                    <p className="text-center text-red-500 mt-10 font-bold">{errorMessage}</p>
+                ) : filteredFoods.length === 0 ? (
+                    <p className="text-center text-gray-500 mt-10">該当する商品がありません。</p>
                 ) : (
                     filteredFoods.map(food => <Card key={food.id} data={food} />)
                 )}
