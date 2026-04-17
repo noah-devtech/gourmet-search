@@ -1,12 +1,14 @@
 export async function onRequestGet(context) {
-    const availableKeys = Object.keys(context.env || {});
-
     if (!context.env.DB) {
+        console.error(
+            "DB binding is missing. Available keys:",
+            Object.keys(context.env || {}),
+        );
+
         return new Response(
             JSON.stringify({
-                error: "DB binding is missing",
-                detected_keys: availableKeys,
-                advice: "Check 'Settings > Functions > D1 database bindings' in Cloudflare Dashboard.",
+                error: "Internal Server Error",
+                message: "データベースの接続設定に問題が発生しています。",
             }),
             { status: 500, headers: { "Content-Type": "application/json" } },
         );
@@ -41,17 +43,19 @@ export async function onRequestGet(context) {
             };
         });
 
-        return new Response(JSON.stringify(formattedData), {
+        return new Response(JSON.stringify({ data: formattedData }), {
             headers: {
                 "Content-Type": "application/json",
+                "Cache-Control": "public, max-age=300",
             },
         });
     } catch (error) {
-        console.error("D1 Error:", error);
+        console.error("D1 Fetch Error:", error.message, error.stack);
+
         return new Response(
             JSON.stringify({
-                error: "Failed to fetch data from D1",
-                details: error.message,
+                error: "Internal Server Error",
+                message: "データの取得中にエラーが発生しました。",
             }),
             {
                 status: 500,
