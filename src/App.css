@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+    /* 獅子まんま検索システム専用のカラーパレット */
+    --color-lions-blue: #092048;
+    --color-lions-red: #e60012;
+    --color-lions-gold: #c59b27;
+
+    --font-family-sans:
+        "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+        "BIZ UDPGothic", "Noto Sans JP", sans-serif;
+}
