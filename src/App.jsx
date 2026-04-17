@@ -2,6 +2,9 @@ import { useMemo } from "react";
 import Card from "./components/Card";
 import FilterButton from "./components/FilterButton";
 import { useState } from "react";
+import { useEffect } from "react";
+
+const ENDPOINT = '/api/master-data';
 
 function App() {
     // Query Text
@@ -12,41 +15,31 @@ function App() {
     const [showActive, setShowActive] = useState(true);
     const [showThisYear, setShowThisYear] = useState(true);
 
+    const [foods, setFoods] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const foods = [
-        {
-            "id": "P00202",
-            "location": {
-                "base": 3,
-                "code": 6
-            },
-            "storeName": "からきち屋",
-            "category": "food",
-            "lastUpdated": "2026-03-21",
-            "isActive": false,
-            "tags": ["唐揚げ", "弁当", "大盛り"],
-            "productName": "唐揚げ弁当",
-            "price": 1300,
-            "size": "大盛り",
-            "options": "唐揚げ4個・ライス350g"
-        },
-        {
-            "id": "P00202",
-            "location": {
-                "base": 1,
-                "code": 6
-            },
-            "storeName": "からきち屋",
-            "category": "food",
-            "lastUpdated": "2025-03-21",
-            "isActive": true,
-            "tags": ["唐揚げ", "弁当", "大盛り"],
-            "productName": "唐揚げ弁当",
-            "price": 1300,
-            "size": "大盛り",
-            "options": "唐揚げ4個・ライス350g"
-        }
-    ]
+    useEffect(() => {
+        const fetchFoods = async () => {
+            try {
+                const response = await fetch(ENDPOINT, {
+                    method: 'GET',
+                    redirect: 'follow'
+                });
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const data = await response.json();
+                setFoods(data);
+            } catch (error) {
+                console.error('データ取得エラー:', error);
+                setErrorMessage('データの読み込みに失敗しました。');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchFoods();
+    }, []);
 
     const filteredFoods = useMemo(() => {
         return foods.filter(food => {
