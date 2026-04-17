@@ -2,9 +2,6 @@ pages_build_output_dir = "./dist"
 compatibility_date = "2026-04-16"
 name = "lions-gourmet-search"
 
-[assets]
-directory = "./dist"
-
 [[d1_databases]]
 binding = "DB"
 database_name = "lions-gourmet-db"
