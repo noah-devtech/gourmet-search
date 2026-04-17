@@ -69,13 +69,17 @@ function App() {
     }, [foods, inputQuery, selectedBase, showActive, showThisYear]);
 
     return (
-        <div className="max-w-[500px] mx-auto p-4 font-sans min-h-screen bg-gray-50">
-            <h1 className="text-2xl font-black text-lions-blue mb-1 flex items-center justify-center gap-2 tracking-tight">
+        <div className="max-w-[500px] mx-auto font-sans min-h-screen bg-gray-50 relative">
+
+            <div className="py-2 px-4">
+                <h1 className="text-2xl font-black text-lions-blue flex items-center justify-center gap-2 tracking-tight">
                 獅子まんま 検索システム
                 <span className="text-xl" role="img" aria-label="search">🔍️</span>
             </h1>
+            </div>
 
-            <div className="relative mb-2">
+            <header className="sticky top-0 z-10 bg-gray-50/60 px-4 py-1 border-b border-gray-200/60 backdrop-blur-sm">
+                <div className="relative my-1">
                 <input
                     className="
                         w-full p-2 text-base border border-gray-300 rounded-xl shadow-sm
@@ -91,9 +95,9 @@ function App() {
                 />
             </div>
 
-            <div className="flex flex-col items-center gap-2 mb-2 overflow-x-auto pb-2 scrollbar-hide">
-                <div className="filters">
-                    <div className="flex bg-gray-200 p-1 rounded-xl mb-1">
+                <div className="flex flex-col items-center gap-2 overflow-x-auto">
+                    <div className="filters w-full">
+                        <div className="flex bg-gray-200 p-1.5 rounded-xl my-1">
                         {['all', 1, 3].map(base => (
                             <button
                                 key={base}
@@ -105,6 +109,7 @@ function App() {
                             </button>
                         ))}
                     </div>
+                        <div className="flex justify-center gap-2 my-1">
                     <FilterButton
                         label="販売終了を含める"
                         isActive={!showActive}
@@ -115,11 +120,12 @@ function App() {
                         isActive={showThisYear}
                         onClick={() => setShowThisYear(prev => !prev)}
                     />
-
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </header>
 
-            <div className="space-y-3">
+            <main className="px-4 py-3 space-y-3">
                 {loading ? (
                     <p className="text-center text-gray-500 mt-10">読み込み中...</p>
                 ) : errorMessage ? (
@@ -129,7 +135,7 @@ function App() {
                 ) : (
                     filteredFoods.map(food => <Card key={food.id} data={food} />)
                 )}
-            </div>
+            </main>
         </div>
     );
 }
