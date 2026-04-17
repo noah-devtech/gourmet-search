@@ -29,7 +29,7 @@ function App() {
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
                 const data = await response.json();
-                setFoods(data);
+                setFoods(data.data);
             } catch (error) {
                 console.error('データ取得エラー:', error);
                 setErrorMessage('データの読み込みに失敗しました。');
