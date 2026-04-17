@@ -77,15 +77,15 @@ function App() {
 
     return (
         <div className="max-w-[500px] mx-auto p-4 font-sans min-h-screen bg-gray-50">
-            <h1 className="text-2xl font-black text-lions-blue mb-6 flex items-center gap-2 tracking-tight">
+            <h1 className="text-2xl font-black text-lions-blue mb-1 flex items-center justify-center gap-2 tracking-tight">
                 獅子まんま 検索システム
                 <span className="text-xl" role="img" aria-label="search">🔍️</span>
             </h1>
 
-            <div className="relative mb-6">
+            <div className="relative mb-2">
                 <input
                     className="
-                        w-full p-3.5 text-base border border-gray-300 rounded-xl shadow-sm
+                        w-full p-2 text-base border border-gray-300 rounded-xl shadow-sm
                         placeholder:text-gray-400
                         focus:outline-none focus:ring-2 focus:ring-lions-blue focus:border-transparent
                         transition-all duration-200
@@ -98,13 +98,13 @@ function App() {
                 />
             </div>
 
-            <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex flex-col items-center gap-2 mb-2 overflow-x-auto pb-2 scrollbar-hide">
                 <div className="filters">
-                    <div className="flex bg-gray-200 p-1 rounded-xl">
+                    <div className="flex bg-gray-200 p-1 rounded-xl mb-1">
                         {['all', 1, 3].map(base => (
                             <button
                                 key={base}
-                                className={`flex-1 py-2 text-sm font-bold rounded-lg transition-all ${selectedBase === base ? "bg-white shadow-sm text-lions-blue" : "text-gray-500"
+                                className={`flex-1 py-1 text-sm font-bold rounded-lg transition-all ${selectedBase === base ? "bg-white shadow-sm text-lions-blue" : "text-gray-500"
                                     }`}
                                 onClick={() => setSelectedBase(base)}
                             >
