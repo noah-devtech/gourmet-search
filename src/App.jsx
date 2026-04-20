@@ -1,8 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Card from "./components/Card";
 import FilterButton from "./components/FilterButton";
-import { useState } from "react";
-import { useEffect } from "react";
 import { matchSearchQuery } from "./utils/searchUtils";
 
 const ENDPOINT = '/api/master-data';
