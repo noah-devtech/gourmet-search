@@ -3,6 +3,7 @@ import Card from "./components/Card";
 import FilterButton from "./components/FilterButton";
 import { useState } from "react";
 import { useEffect } from "react";
+import { matchSearchQuery } from "./utils/searchUtils";
 
 const ENDPOINT = '/api/master-data';
 
@@ -56,17 +57,8 @@ function App() {
             // 塁側フィルタ
             if (selectedBase !== 'all' && food.location?.base !== selectedBase) return false;
 
-            // 検索クエリ（商品名・店舗名）
-            if (inputQuery) {
-                const query = inputQuery.toLowerCase();
-                const matchProduct = food.productName.toLowerCase().includes(query);
-                const matchStore = food.storeName.toLowerCase().includes(query);
-                const matchOptions = food.options.toLowerCase().includes(query);
-                const matchTags = food.tags.some(tag => {
-                    return tag.toLowerCase().includes(query);
-                })
-                if (!matchProduct && !matchStore && !matchOptions && !matchTags) return false;
-            }
+            // 検索クエリ
+            if (!matchSearchQuery(food, inputQuery)) return false;
 
             return true;
         });
