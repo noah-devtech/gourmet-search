@@ -61,7 +61,11 @@ function App() {
                 const query = inputQuery.toLowerCase();
                 const matchProduct = food.productName.toLowerCase().includes(query);
                 const matchStore = food.storeName.toLowerCase().includes(query);
-                if (!matchProduct && !matchStore) return false;
+                const matchOptions = food.options.toLowerCase().includes(query);
+                const matchTags = food.tags.some(tag => {
+                    return tag.toLowerCase().includes(query);
+                })
+                if (!matchProduct && !matchStore && !matchOptions && !matchTags) return false;
             }
 
             return true;
