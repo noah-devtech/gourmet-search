@@ -41,6 +41,9 @@ function App() {
     }, []);
 
     const filteredFoods = useMemo(() => {
+
+        const queries = inputQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
         return foods.filter(food => {
             // 販売終了フィルタ
             if (showActive && !food.isActive) return false;
@@ -56,7 +59,9 @@ function App() {
             if (selectedBase !== 'all' && food.location?.base !== selectedBase) return false;
 
             // 検索クエリ
-            if (!matchSearchQuery(food, inputQuery)) return false;
+            if (queries.length > 0) {
+                if (!queries.every(q => matchSearchQuery(food, q))) return false;
+            }
 
             return true;
         });

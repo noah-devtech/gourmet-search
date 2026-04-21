@@ -1,14 +1,10 @@
 export const matchSearchQuery = (food, query) => {
-    if (!query) return true;
-
-    const q = query.toLowerCase();
-
     const targets = [
-        food.productName?.toLowerCase(),
-        food.storeName?.toLowerCase(),
-        food.options?.toLowerCase(),
-        ...(food.tags || []).map((t) => t.toLowerCase()),
+        food.productName,
+        food.storeName,
+        food.options,
+        ...(food.tags || []),
     ];
 
-    return targets.some((target) => target?.includes(q));
+    return targets.some((target) => target?.toLowerCase().includes(query));
 };
