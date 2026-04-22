@@ -1,8 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import Card from "./components/Card";
 import FilterButton from "./components/FilterButton";
-import { useState } from "react";
-import { useEffect } from "react";
+import { matchSearchQuery } from "./utils/searchUtils";
 
 const ENDPOINT = '/api/master-data';
 
@@ -42,6 +41,9 @@ function App() {
     }, []);
 
     const filteredFoods = useMemo(() => {
+
+        const queries = inputQuery.trim().toLowerCase().split(/\s+/).filter(Boolean);
+
         return foods.filter(food => {
             // 販売終了フィルタ
             if (showActive && !food.isActive) return false;
@@ -56,12 +58,9 @@ function App() {
             // 塁側フィルタ
             if (selectedBase !== 'all' && food.location?.base !== selectedBase) return false;
 
-            // 検索クエリ（商品名・店舗名）
-            if (inputQuery) {
-                const query = inputQuery.toLowerCase();
-                const matchProduct = food.productName.toLowerCase().includes(query);
-                const matchStore = food.storeName.toLowerCase().includes(query);
-                if (!matchProduct && !matchStore) return false;
+            // 検索クエリ
+            if (queries.length > 0) {
+                if (!queries.every(q => matchSearchQuery(food, q))) return false;
             }
 
             return true;
@@ -91,7 +90,7 @@ function App() {
                         type="text"
                         value={inputQuery}
                         onChange={(e) => setInputQuery(e.target.value)}
-                        placeholder="商品名、店舗名で検索..."
+                        placeholder="商品名、店舗名、タグなどで検索..."
                     />
                     {inputQuery && (
                         <button
