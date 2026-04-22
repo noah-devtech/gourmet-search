@@ -6,5 +6,7 @@ export const matchSearchQuery = (food, query) => {
         ...(food.tags || []),
     ];
 
-    return targets.some((target) => target?.toLowerCase().includes(query));
+    return targets.some(
+        (target) => typeof target === "string" && target.toLowerCase().includes(query)
+    );
 };
