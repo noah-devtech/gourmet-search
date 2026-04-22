@@ -90,7 +90,7 @@ function App() {
                         type="text"
                         value={inputQuery}
                         onChange={(e) => setInputQuery(e.target.value)}
-                        placeholder="商品名、店舗名で検索..."
+                        placeholder="商品名、店舗名、タグなどで検索..."
                     />
                     {inputQuery && (
                         <button
