@@ -56,7 +56,7 @@ pnpm install
 `init.sql` を実行し、テーブル作成とテストデータの流し込みを行います。
 
 ```bash
-npx wrangler d1 execute DB --local --file=./init.sql
+pnpm exec wrangler d1 execute DB --local --file=./init.sql
 ```
 
 **Note**: `--local` フラグをつけることで、本番環境のDBには影響を与えず、プロジェクト内の .wrangler/ ディレクトリ配下にローカルSQLiteファイルが生成されます。
@@ -99,13 +99,13 @@ pnpm run deploy
 
 ```bash
 # 本番DBのレコード数を確認（接続テスト）
-npx wrangler d1 execute DB --remote --command="SELECT COUNT(*) FROM foodList"
+pnpm exec wrangler d1 execute DB --remote --command="SELECT COUNT(*) FROM foodList"
 
 # リモートからローカルにSQLファイルを生成する
-npx wrangler d1 export DB --remote --output ./dump.sql
+pnpm exec wrangler d1 export DB --remote --output ./dump.sql
 
 # 特定のレコードを更新する場合
-npx wrangler d1 execute DB --remote --command="UPDATE foodList SET price = 1500 WHERE id = 'PXXXXX'"
+pnpm exec wrangler d1 execute DB --remote --command="UPDATE foodList SET price = 1500 WHERE id = 'PXXXXX'"
 ```
 
 **⚠️ 警告**: `--remote` 操作は本番環境のライブデータに即座に反映されます。 誤ったクエリはデータの破損や不整合を引き起こす可能性があるため、十分に注意して実行してください。
