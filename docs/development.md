@@ -101,6 +101,9 @@ pnpm run deploy
 # 本番DBのレコード数を確認（接続テスト）
 npx wrangler d1 execute DB --remote --command="SELECT COUNT(*) FROM foodList"
 
+# リモートからローカルにSQLファイルを生成する
+npx wrangler d1 export DB --remote --output ./dump.sql
+
 # 特定のレコードを更新する場合
 npx wrangler d1 execute DB --remote --command="UPDATE foodList SET price = 1500 WHERE id = 'PXXXXX'"
 ```
