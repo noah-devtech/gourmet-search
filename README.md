@@ -3,7 +3,7 @@
 <p align="center">
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat" alt="JavaScript">
 <img src="https://img.shields.io/badge/-React-%2320232a.svg?logo=react&&logoColor=%2361DAFB&style=flat" alt="React">
-<img src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss" alt="Tailwind CSS">
+<img src="https://img.shields.io/badge/tailwindcss-0F172A?logo=tailwindcss" alt="Tailwind CSS">
 <img src="https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=Cloudflare&logoColor=white" alt="Cloudflare">
 </p>
 
